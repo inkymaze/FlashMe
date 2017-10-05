@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native'
+import { View, TouchableOpacity, Text, TextInput, StyleSheet, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { addDeck } from '../actions'
-import { purple, white } from '../utils/colors';
+import { blue, white } from '../utils/colors';
 import { NavigationActions } from 'react-navigation'
 
 
@@ -26,13 +26,13 @@ class AddDeck extends Component {
 
     const key = this.state.title
     const deck = this.state
-
-    // this.props.dispatch(addDeck({
+    console.log(this.state);
+    // this.props.addDeck({
     //   [key]: deck
-    // }))
+    // })
 
     this.setState(() => ({ title: "", questions: [] }))
-
+    console.log(this.state);
     // this.toHome()
 
     // submitDeck({ key, deck })
@@ -47,14 +47,18 @@ class AddDeck extends Component {
 
 
   render() {
-
+    const {title} = this.state
 
     return (
       <View style={styles.container}>
 
 
             <View style={styles.row}>
-              <Text>Add Deck </Text>
+              <TextInput
+                style={styles.center}
+                placeholder='Deck Title'
+                value={title}
+                onChangeText={(title) => {this.setState({ title })}}/>
             </View>
 
         <SubmitBtn onPress={this.submit} />
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iosSubmitBtn: {
-    backgroundColor: purple,
+    backgroundColor: blue,
     padding: 10,
     borderRadius: 7,
     height: 45,
@@ -83,7 +87,7 @@ const styles = StyleSheet.create({
     marginRight: 40,
   },
   AndroidSubmitBtn: {
-    backgroundColor: purple,
+    backgroundColor: blue,
     padding: 10,
     paddingLeft: 30,
     paddingRight: 30,
@@ -109,4 +113,4 @@ const styles = StyleSheet.create({
 
 
 
-export default AddDeck;
+export default connect(null, {addDeck})(AddDeck);

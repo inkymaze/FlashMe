@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native';
-import { DECK_STORAGE_KEY, setFillerData } from './_flashCards.js';
+import { DECK_STORAGE_KEY, setFillerData } from './_flashCards';
 
 
 export function submitDeck ({ deck, key }) {

@@ -4,15 +4,23 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import DeckList from './components/DeckList';
 import AddDeck from './components/AddDeck';
+import DeckDetail from './components/DeckDetail';
 import reducer from './reducers';
 import { setLocalNotification } from './utils/helpers';
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import DeckDetail from './components/DeckDetail';
+
 import { blue } from './utils/colors';
-import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 
 const Tabs = TabNavigator({
+  DeckList: {
+    screen: DeckList,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+      tabBarIcon: () => <Ionicons name='ios-home' size={30} color={blue} />
+    },
+  },
   AddDeck: {
   screen: AddDeck,
   navigationOptions: {
@@ -28,6 +36,9 @@ const MainNavigator = StackNavigator({
   },
   DeckDetail: {
     screen: DeckDetail
+  },
+  DeckList: {
+    screen: DeckList
   }
 });
 
@@ -40,7 +51,7 @@ export default class App extends React.Component {
       <Provider store={createStore(reducer)}>
          <View style={{flex: 1}}>
            <View>
-             <StatusBar translucent backgroundColor={ blue }/>
+             <StatusBar backgroundColor={ blue }/>
            </View>
            <MainNavigator />
          </View>
