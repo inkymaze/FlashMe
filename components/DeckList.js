@@ -14,7 +14,7 @@ class DeckList extends React.Component {
   componentDidMount() {
     fetchDeckResults()
       .then((decks) => this.props.dispatch(receiveDecks(decks)))
-      // .then((results) => this.props.receiveDecks(results))
+      
       .then(() => this.setState(() => ({ready: true})))
 
 

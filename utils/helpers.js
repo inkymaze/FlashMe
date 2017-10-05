@@ -2,29 +2,14 @@
 // getDeck: take in a single id argument and return the deck associated with that id.
 // saveDeckTitle: take in a single title argument and add it to the decks.
 // addCardToDeck: take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
-import { Notifications, Permissions } from 'expo'
-import React from 'react'
-import { AsyncStorage } from 'react-native'
+import { Notifications, Permissions } from 'expo';
+import React from 'react';
+import { AsyncStorage } from 'react-native';
 
-const NOTIFICATION_KEY = "FlashMe:notifications"
+const NOTIFICATION_KEY = "FlashMe:notifications";
 
 
 
-export function getDecks() {
-
-}
-
-export function getDeck() {
-
-}
-
-export function saveDeckTitle(title) {
-
-}
-
-export function addCardToDeck(title, card) {
-
-}
 
 export function clearLocalNotification () {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)

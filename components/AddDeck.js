@@ -26,10 +26,10 @@ class AddDeck extends Component {
 
     const key = this.state.title
     const deck = this.state
-    console.log(this.state);
-    // this.props.addDeck({
-    //   [key]: deck
-    // })
+    console.log('key',key);
+    this.props.addDeck({
+      [key]: deck
+    })
 
     this.setState(() => ({ title: "", questions: [] }))
     console.log(this.state);
@@ -52,8 +52,9 @@ class AddDeck extends Component {
     return (
       <View style={styles.container}>
 
-
+        <Text style={[styles.center, {color: blue}]}>What is the title of your new FlashMe deck?</Text>
             <View style={styles.row}>
+
               <TextInput
                 style={styles.center}
                 placeholder='Deck Title'
