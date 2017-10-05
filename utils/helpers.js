@@ -26,6 +26,11 @@ export function addCardToDeck(title, card) {
 
 }
 
+export function clearLocalNotification () {
+  return AsyncStorage.removeItem(NOTIFICATION_KEY)
+    .then(Notifications.cancelAllScheduledNotificationsAsync);
+}
+
 function createNotification () {
   return {
     title: 'Have a FLASH!',

@@ -2,8 +2,19 @@ import React, { Component } from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { addDeck } from '../actions'
-import { purple, white } from './utils/colors';
+import { purple, white } from '../utils/colors';
 import { NavigationActions } from 'react-navigation'
+
+
+function SubmitBtn ({ onPress }) {
+return (
+  <TouchableOpacity
+    style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
+    onPress={onPress}>
+      <Text style={styles.submitBtnText}>SUBMIT</Text>
+  </TouchableOpacity>
+)
+}
 
 class AddDeck extends Component {
   state = {
@@ -12,19 +23,19 @@ class AddDeck extends Component {
   }
 
   submit = () => {
-  
+
     const key = this.state.title
     const deck = this.state
 
-    this.props.dispatch(addDeck({
-      [key]: deck
-    }))
+    // this.props.dispatch(addDeck({
+    //   [key]: deck
+    // }))
 
     this.setState(() => ({ title: "", questions: [] }))
 
-    this.toHome()
+    // this.toHome()
 
-    submitDeck({ key, deck })
+    // submitDeck({ key, deck })
 
   }
 
@@ -33,18 +44,19 @@ class AddDeck extends Component {
   }
 
 
+
+
   render() {
 
 
     return (
       <View style={styles.container}>
 
-          return (
-            <View key={key} style={styles.row}>
-              <Text> </Text>
+
+            <View style={styles.row}>
+              <Text>Add Deck </Text>
             </View>
-          )
-        })}
+
         <SubmitBtn onPress={this.submit} />
       </View>
     )
@@ -97,4 +109,4 @@ const styles = StyleSheet.create({
 
 
 
-export default AddEntry;
+export default AddDeck;
