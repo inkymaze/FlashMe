@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Text, TextInput, StyleSheet, Platform } from 'react-native'
+import { View, TouchableOpacity, Text, TextInput, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import { addDeck } from '../actions'
 import { blue, white } from '../utils/colors';
 import { NavigationActions } from 'react-navigation'
-
+import { submitDeck } from '../utils/api';
 
 function SubmitBtn ({ onPress }) {
 return (
+
   <TouchableOpacity
     style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
     onPress={onPress}>
       <Text style={styles.submitBtnText}>SUBMIT</Text>
   </TouchableOpacity>
+
 )
 }
 
@@ -26,16 +28,16 @@ class AddDeck extends Component {
 
     const key = this.state.title
     const deck = this.state
-    
+
     this.props.addDeck({
       [key]: deck
     })
 
     this.setState(() => ({ title: "", questions: [] }))
-    console.log(this.state);
-    // this.toHome()
+  
+    this.toHome()
 
-    // submitDeck({ key, deck })
+    submitDeck({ key, deck })
 
   }
 
@@ -48,12 +50,14 @@ class AddDeck extends Component {
 
   render() {
     const {title} = this.state
-
+    console.log('add deck props', this.props);
     return (
+
       <View style={styles.container}>
 
         <Text style={[styles.center, {color: blue}]}>What is the title of your new FlashMe deck?</Text>
-            <View style={styles.row}>
+
+        <View style={styles.row}>
 
               <TextInput
                 style={styles.center}
@@ -63,7 +67,9 @@ class AddDeck extends Component {
             </View>
 
         <SubmitBtn onPress={this.submit} />
+
       </View>
+
     )
   }
 }

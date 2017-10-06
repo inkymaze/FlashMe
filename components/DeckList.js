@@ -26,7 +26,7 @@ class DeckList extends React.Component {
 
 
   // Ask udacity why this doesnt work
-  // renderItem({item}) {... but the below does 
+  // renderItem({item}) {... but the below does
 
   renderItem = ({item}) => {
       // console.log('renderDeck',props);
@@ -34,9 +34,8 @@ class DeckList extends React.Component {
        return (
          <TouchableOpacity style={styles.deck}
            onPress={() => this.props.navigation.navigate(
-             'DeckDetail'
-           )}
-         >
+             'DeckDetail', { title: item.title }
+          )}>
              <Text style={styles.title}>{item.title}</Text>
              <Text style={styles.question}>{item.questionCount} {question}</Text>
          </TouchableOpacity>

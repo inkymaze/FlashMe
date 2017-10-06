@@ -12,8 +12,6 @@ export function receiveDecks (decks) {
   };
 }
 
-
-
 export function addDeck (deck) {
   return {
     type: ADD_DECK,
@@ -27,13 +25,6 @@ export function addCard(card) {
     card,
   };
 }
-
-// likely needs to break down card when sendign to submitDeck
-export const requestAddCard = (card) => dispatch => {
-  return submitDeck(card).then( cardResponse => {
-      dispatch(addCard(cardResponse));
-    });
-};
 
 export const requestDecks = () => dispatch => {
   return fetchDeckResults().then( decks => {

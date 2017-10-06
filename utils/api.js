@@ -7,8 +7,8 @@ export function fetchDeckResults() {
     .then(setFillerData)
 }
 
-export function submitEntry ({ key, entry }) {
+export function submitDeck ({ key, deck }) {
   return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
-    [key]: entry
+    [key]: deck
   }))
 }

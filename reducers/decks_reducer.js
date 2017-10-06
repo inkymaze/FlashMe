@@ -4,12 +4,15 @@ const DecksReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_DECKS:
-  
+
       return {
         ...state,
         ...action.decks
       }
     case ADD_DECK:
+      console.log('adding deck');
+      console.log('state', state);
+      console.log('action.deck = ', action.deck);
       return {
         ...state,
         ...action.deck
