@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import DeckList from './components/DeckList';
+import CardNew from './components/CardNew';
+import Quiz from './components/Quiz';
 import AddDeck from './components/AddDeck';
 import DeckDetail from './components/DeckDetail';
 import rootReducer from './reducers/root_reducer';
@@ -48,7 +50,13 @@ const MainNavigator = StackNavigator({
   },
   DeckList: {
     screen: DeckList
-  }
+  },
+  CardNew: {
+    screen: CardNew
+  },
+  Quiz: {
+    screen: Quiz
+  },
 });
 
 export default class App extends React.Component {

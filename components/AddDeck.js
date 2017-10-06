@@ -7,15 +7,13 @@ import { NavigationActions } from 'react-navigation'
 import { submitDeck } from '../utils/api';
 
 function SubmitBtn ({ onPress }) {
-return (
-
-  <TouchableOpacity
-    style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-    onPress={onPress}>
-      <Text style={styles.submitBtnText}>SUBMIT</Text>
-  </TouchableOpacity>
-
-)
+  return (
+    <TouchableOpacity
+      style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
+      onPress={onPress}>
+        <Text style={styles.submitBtnText}>Create Deck</Text>
+    </TouchableOpacity>
+    )
 }
 
 class AddDeck extends Component {
@@ -34,7 +32,7 @@ class AddDeck extends Component {
     })
 
     this.setState(() => ({ title: "", questions: [] }))
-  
+
     this.toHome()
 
     submitDeck({ key, deck })
