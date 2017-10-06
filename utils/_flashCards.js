@@ -1,9 +1,9 @@
 import { AsyncStorage } from 'react-native';
-export const DECK_STORAGE_KEY = 'FlashMe:flashcards';
+export const DECK_STORAGE_KEY = 'Flashme:flashcards';
 
-function setFillerData(decks) {
+export function setFillerData(decks) {
 
-    let fillerData = {
+    const fillerData = {
       React: {
         title: 'React',
         questions: [

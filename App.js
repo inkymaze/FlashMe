@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import DeckList from './components/DeckList';
 import AddDeck from './components/AddDeck';
 import DeckDetail from './components/DeckDetail';
-import reducer from './reducers';
+import rootReducer from './reducers/root_reducer';
 import { setLocalNotification } from './utils/helpers';
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import thunk from 'redux-thunk';
 
 import { blue } from './utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
@@ -48,7 +49,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <Provider store={createStore(reducer)}>
+      <Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
          <View style={{flex: 1}}>
            <View>
              <StatusBar backgroundColor={ blue }/>

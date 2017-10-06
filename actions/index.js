@@ -1,4 +1,5 @@
 import { submitDeck } from '../utils/api';
+import { fetchDeckResults } from '../utils/api';
 
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const ADD_DECK = 'ADD_DECK';
@@ -29,5 +30,11 @@ export function addCard(card) {
 export const requestAddCard = (card) => dispatch => {
   return submitDeck(card).then( cardResponse => {
       dispatch(addCard(cardResponse));
+    });
+};
+
+export const requestDecks = () => dispatch => {
+  return fetchDeckResults().then( decks => {
+      dispatch(receiveDecks(decks));
     });
 };

@@ -2,9 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { white } from '../utils/colors';
 import { connect } from 'react-redux';
-import { receiveDecks } from '../actions';
-import { fetchDeckResults } from '../utils/api';
 import { AppLoading} from 'expo'
+import { requestDecks } from '../actions';
 
 class DeckList extends React.Component {
   state = {
@@ -12,26 +11,26 @@ class DeckList extends React.Component {
   }
 
   componentDidMount() {
-    fetchDeckResults()
-      .then((decks) => this.props.dispatch(receiveDecks(decks)))
-      
+    this.props.requestDecks()
       .then(() => this.setState(() => ({ready: true})))
-
-
   }
+  //
+  // renderDecks() {
+  //   this.decks.
+  // }
 
   render() {
     const { decks } = this.props
     const { ready } = this.state
 
     console.log('Deck list props',this.props);
-
+    console.log('deck list state', this.state);
     if (ready === false) {
       return <AppLoading />
     }
     return (
       <View style={styles.container}>
-        <Text>Decklist</Text>
+        <Text>{this.renderDecks}</Text>
       </View>
 
     );
@@ -48,8 +47,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (decks) => (
+const mapStateToProps = ({decks}) => (
   decks
 )
 
-export default connect(mapStateToProps)(DeckList);
+export default connect(mapStateToProps, { requestDecks })(DeckList);

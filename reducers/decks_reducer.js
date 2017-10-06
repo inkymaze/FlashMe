@@ -1,6 +1,6 @@
 import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from '../actions'
 
-const decks = (state = {}, action) => {
+const DecksReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_DECKS:
@@ -27,4 +27,4 @@ const decks = (state = {}, action) => {
   }
 }
 
-export default decks;
+export default DecksReducer;
