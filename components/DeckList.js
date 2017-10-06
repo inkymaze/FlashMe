@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { white } from '../utils/colors';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { white, blue } from '../utils/colors';
 import { connect } from 'react-redux';
 import { AppLoading} from 'expo'
 import { requestDecks } from '../actions';
@@ -16,21 +16,46 @@ class DeckList extends React.Component {
   }
   //
   // renderDecks() {
-  //   this.decks.
+  //   Object.values(this.props.decks).map(deck => {
+  //     console.log('deck title', deck.title);
+  //     return (
+  //       <View style={styles.container}>
+  //         <Text style={[styles.container, {color: blue}]}>Hello</Text>
+  //
+  //       </View>
+  //     )
+  //   })
   // }
+
+ //  _renderItem = (deck) => (
+ //
+ //    <View>
+ //     <Text >{deck.title}</Text>
+ //     <Text >Questions:({deck.questions.length})</Text>
+ //    </View>
+ // );
+
+  _keyExtractor = (item, index) => item.id;
 
   render() {
     const { decks } = this.props
     const { ready } = this.state
 
-    console.log('Deck list props',this.props);
-    console.log('deck list state', this.state);
+    console.log('Deck list props',decks);
+    // console.log('deck list state', this.state);
     if (ready === false) {
       return <AppLoading />
     }
     return (
       <View style={styles.container}>
-        <Text>{this.renderDecks}</Text>
+        
+
+          <FlatList
+            data={Object.keys(decks)}
+            renderItem={({item}) =>
+              <Text>{item}</Text>}
+            />
+
       </View>
 
     );
@@ -47,7 +72,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = ({decks}) => (
+const mapStateToProps = (decks) => (
   decks
 )
 

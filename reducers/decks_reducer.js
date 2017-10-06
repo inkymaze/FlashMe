@@ -4,6 +4,7 @@ const DecksReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_DECKS:
+    console.log(action.decks);
       return {
         ...state,
         ...action.decks
