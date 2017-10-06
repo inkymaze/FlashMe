@@ -9,10 +9,18 @@ import rootReducer from './reducers/root_reducer';
 import { setLocalNotification } from './utils/helpers';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import thunk from 'redux-thunk';
-
+import {Constants} from 'expo';
 import { blue } from './utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
+
+function FlashCardStatusBar ({backgroundColor, ...props}) {
+  return (
+    <View style={{backgroundColor, height: Constants.statusBarHeight}}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props}/>
+    </View>
+  )
+}
 
 const Tabs = TabNavigator({
   DeckList: {
@@ -51,11 +59,9 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
          <View style={{flex: 1}}>
-           <View>
-             <StatusBar backgroundColor={ blue }/>
-           </View>
-           <MainNavigator />
-         </View>
+          <FlashCardStatusBar backgroundColor={ blue } barStyle='light-content'/>
+          <MainNavigator />
+        </View>
       </Provider>
     );
   }

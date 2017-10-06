@@ -1,11 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { white, blue } from '../utils/colors';
 import { connect } from 'react-redux';
 import { AppLoading} from 'expo'
 import { requestDecks } from '../actions';
+import _ from 'lodash';
 
 class DeckList extends React.Component {
+  constructor(props){
+    super(props)
+    this.selectDeck = this.selectDeck.bind(this)
+  }
   state = {
     ready: false,
   }
@@ -14,50 +19,81 @@ class DeckList extends React.Component {
     this.props.requestDecks()
       .then(() => this.setState(() => ({ready: true})))
   }
-  //
-  // renderDecks() {
-  //   Object.values(this.props.decks).map(deck => {
-  //     console.log('deck title', deck.title);
-  //     return (
-  //       <View style={styles.container}>
-  //         <Text style={[styles.container, {color: blue}]}>Hello</Text>
-  //
-  //       </View>
-  //     )
-  //   })
-  // }
 
- //  _renderItem = (deck) => (
- //
- //    <View>
- //     <Text >{deck.title}</Text>
- //     <Text >Questions:({deck.questions.length})</Text>
- //    </View>
- // );
+  selectDeck(title) {
+    console.log('selecDEck title',title);
+  }
 
-  _keyExtractor = (item, index) => item.id;
+
+  renderDeck({item}) {
+
+      let question = item.questionCount === 1 ? 'question' : 'questions';
+       return (
+         <TouchableOpacity style={styles.deck} onPress={() => this.selectDeck(item.title)}>
+             <Text style={styles.title}>{item.title}</Text>
+             <Text style={styles.question}>{item.questionCount} {question}</Text>
+         </TouchableOpacity>
+       );
+   }
+
+
+ renderItems() {
+   return _.map(this.props.decks, deck => {
+     console.log('indivi', deck);
+     return (
+      <View key={deck}>
+        <Text >{deck.title}</Text>
+
+      </View>
+      )
+    })
+  }
+
+//
+//    return _.map(sortedPosts, post => {
+//
+//   return (
+//     <ul className='post-info' key={post.id}>
+//       <PostsDetail post={post} key={post.id} count={this.commentCount(post.id)}/>
+//         <div className='vote-buttons'>
+//           <button onClick={() => {this.updateVoteScore(post.id, 'upVote');}}>Upvote</button>
+//           <button onClick={() => {this.updateVoteScore(post.id, 'downVote');}}>Downvote</button>
+//         </div>
+//     </ul>
+//   );
+//
+// });
+
+
+
 
   render() {
-    const { decks } = this.props
     const { ready } = this.state
 
-    console.log('Deck list props',decks);
+    console.log('Deck list props',this.props);
     // console.log('deck list state', this.state);
+
+    const decks = _.map(this.props.decks, deck => {
+           return {
+               title: deck.title,
+               questionCount: deck.questions.length
+           }
+       });
+
     if (ready === false) {
       return <AppLoading />
     }
     return (
       <View style={styles.container}>
-        
+
 
           <FlatList
-            data={Object.keys(decks)}
-            renderItem={({item}) =>
-              <Text>{item}</Text>}
-            />
-
+           style={styles.deckList}
+           data={decks}
+           renderItem={this.renderDeck}
+           keyExtractor={item => item.title}
+         />
       </View>
-
     );
   }
 }
@@ -69,11 +105,51 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     backgroundColor: white
+  },
+  deck: {
+    height: 100,
+    padding: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: blue,
+},
+  title: {
+    fontSize: 29,
+    color: blue,
+  },
+  question: {
+    fontSize: 17,
+    color: blue
   }
+
 });
 
-const mapStateToProps = (decks) => (
+// const mapStateToProps = (decks) => {
+//   return {
+//     decks: (Object.keys(decks).reduce((result, id) => {
+//       // console.log('result',decks[id]);
+//       result.push(decks[id])
+//
+//       return result
+//     }, []))
+//   }
+// }
+
+
+const mapStateToProps = ({decks}) => ({
   decks
-)
+});
+
+  // function mapStateToProps (decks) {
+  //   return {
+  //     decks: (Object.keys(decks).reduce((result, id) => {
+  //       result.push(decks[id])
+  //       return result
+  //     }, [])).reverse()
+  //   }
+  // }
 
 export default connect(mapStateToProps, { requestDecks })(DeckList);

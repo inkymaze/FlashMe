@@ -26,7 +26,7 @@ class AddDeck extends Component {
 
     const key = this.state.title
     const deck = this.state
-    console.log('key',key);
+    
     this.props.addDeck({
       [key]: deck
     })
