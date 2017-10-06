@@ -9,7 +9,7 @@ import _ from 'lodash';
 class DeckList extends React.Component {
   constructor(props){
     super(props)
-    this.selectDeck = this.selectDeck.bind(this)
+    // this.selectDeck = this.selectDeck.bind(this)
   }
   state = {
     ready: false,
@@ -20,16 +20,23 @@ class DeckList extends React.Component {
       .then(() => this.setState(() => ({ready: true})))
   }
 
-  selectDeck(title) {
-    console.log('selecDEck title',title);
-  }
+  // selectDeck(title) {
+  //   console.log('selecDEck title',title);
+  // }
 
 
-  renderDeck({item}) {
+  // Ask udacity why this doesnt work
+  // renderItem({item}) {... but the below does 
 
+  renderItem = ({item}) => {
+      // console.log('renderDeck',props);
       let question = item.questionCount === 1 ? 'question' : 'questions';
        return (
-         <TouchableOpacity style={styles.deck} onPress={() => this.selectDeck(item.title)}>
+         <TouchableOpacity style={styles.deck}
+           onPress={() => this.props.navigation.navigate(
+             'DeckDetail'
+           )}
+         >
              <Text style={styles.title}>{item.title}</Text>
              <Text style={styles.question}>{item.questionCount} {question}</Text>
          </TouchableOpacity>
@@ -37,17 +44,17 @@ class DeckList extends React.Component {
    }
 
 
- renderItems() {
-   return _.map(this.props.decks, deck => {
-     console.log('indivi', deck);
-     return (
-      <View key={deck}>
-        <Text >{deck.title}</Text>
-
-      </View>
-      )
-    })
-  }
+ // renderItems() {
+ //   return _.map(this.props.decks, deck => {
+ //     console.log('indivi', deck);
+ //     return (
+ //      <View key={deck}>
+ //        <Text >{deck.title}</Text>
+ //
+ //      </View>
+ //      )
+ //    })
+ //  }
 
 //
 //    return _.map(sortedPosts, post => {
@@ -86,13 +93,11 @@ class DeckList extends React.Component {
     return (
       <View style={styles.container}>
 
-
-          <FlatList
-           style={styles.deckList}
-           data={decks}
-           renderItem={this.renderDeck}
-           keyExtractor={item => item.title}
-         />
+        <FlatList
+         data={decks}
+         renderItem={this.renderItem}
+         keyExtractor={item => item.title}
+       />
       </View>
     );
   }
