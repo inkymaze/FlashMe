@@ -1,28 +1,32 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView} from 'react-native';
-import { Button } from 'react-native-elements';
+import {View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput, Platform, KeyboardAvoidingView} from 'react-native';
+import { Button, FormValidationMessage } from 'react-native-elements';
 import {connect} from 'react-redux';
 import { addCard } from '../actions';
 import { white, blue } from '../utils/colors';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 class CardNew extends React.Component {
   state = {
     question: "",
     answer: "",
+    errors: ""
   }
   //
   addCardToDeck = () => {
     const { question, answer } = this.state;
     // const title = this.props.navigation.state.params.title;
-    if (question === "" || answer )
+    if (!question || !answer) {this.setState({errors: 'Please fill out both fields'});}
+
     // this.props.addCard(title, this.state);
   //
   }
 
   render () {
     console.log('new card form props', this.props);
-    console.log('q', this.state.question === "");
+    console.log('new card state', this.state);
     return (
+      <KeyboardAwareScrollView>
       <View style={styles.container}>
 
           <TextInput
@@ -38,21 +42,30 @@ class CardNew extends React.Component {
             onChangeText={(input) => { this.setState({ answer: input }) }}
             multiline = {true}
           />
-        <Button title="Submit" onPress={this.addCardToDeck}/>
+        <TouchableOpacity style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
+                onPress={this.addCardToDeck}>
+              <Text style={styles.submitBtnText}>Add Card</Text>
+            </TouchableOpacity>
+        <FormValidationMessage>
+            {this.state.errors}
+        </FormValidationMessage>
 
-
-        </View>
+      </View>
+    </KeyboardAwareScrollView>
     );
   }
 }
 
 
+const { width } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    padding: 20,
-    backgroundColor: white
+    justifyContent: 'center'
+
+    // backgroundColor: white
   },
   title: {
     fontSize: 29,
@@ -61,10 +74,9 @@ const styles = StyleSheet.create({
 
   },
   question: {
-    fontSize: 23,
-    flex: .25,
+    fontSize: 25,
+    padding: 30,
     color: blue,
-
     borderBottomWidth: 1,
     borderBottomColor: blue,
     justifyContent: "center",
@@ -74,7 +86,8 @@ const styles = StyleSheet.create({
     fontSize: 23,
     flex: .55,
     color: blue,
-    paddingTop: 30,
+    padding: 30,
+    margin: 25,
     borderBottomColor: blue,
     justifyContent: "center",
     alignItems: "center",
@@ -83,6 +96,31 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     color: blue,
 
+  },
+  iosSubmitBtn: {
+    backgroundColor: blue,
+    padding: 10,
+    borderRadius: 7,
+    height: 45,
+    marginLeft: 40,
+    marginRight: 40,
+
+  },
+  AndroidSubmitBtn: {
+    backgroundColor: blue,
+    padding: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    height: 45,
+    borderRadius: 2,
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  submitBtnText: {
+    color: white,
+    fontSize: 20,
+    textAlign: 'center',
   }
 
 });
