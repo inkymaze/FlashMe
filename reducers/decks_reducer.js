@@ -10,22 +10,24 @@ const DecksReducer = (state = {}, action) => {
         ...action.decks
       }
     case ADD_DECK:
-      console.log('adding deck');
-      console.log('state', state);
-      console.log('action.deck = ', action.deck);
+
       return {
         ...state,
         ...action.deck
       }
-    // case ADD_CARD:
-    //
-    //   return {
-    //     ...state,
-    //     [action.card.title]: {
-    //      action.card.title,
-    //      questions: [{ question, answer, result: null }, ...state[action.card.title].questions]
-    //     }
-    //   }
+    case ADD_CARD:
+    console.log('adding card');
+    console.log('state', state);
+    console.log('action.card = ', action.card);
+    console.log('action.title = ', action.title);
+
+      return {
+        ...state,
+        // [action.title]: {
+        //  title: [action.title],
+        //  questions: [{action.card}, ...state[action.title].questions]
+        // }
+      }
     default:
       return state
   }
