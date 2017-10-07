@@ -23,10 +23,10 @@ const DecksReducer = (state = {}, action) => {
 
       return {
         ...state,
-        // [action.title]: {
-        //  title: [action.title],
-        //  questions: [{action.card}, ...state[action.title].questions]
-        // }
+        [action.title]: {
+         title: [action.title],
+         questions: [[action.card], ...state[action.title].questions]
+        }
       }
     default:
       return state

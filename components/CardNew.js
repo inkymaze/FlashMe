@@ -15,20 +15,30 @@ class CardNew extends React.Component {
   //
   addCardToDeck = () => {
     const { question, answer } = this.state;
-    // const title = this.props.navigation.state.params.title;
-    if (!question || !answer) {this.setState({errors: 'Please fill out both fields'});}
+    const title = this.props.navigation.state.params.title;
+    if (!question || !answer) {
+      this.setState({errors: 'Please fill out both fields'});
+      return
+    }
 
-    // this.props.addCard(title, this.state);
-  //
+    let newCard = { 'question': question, 'answer': answer }
+    this.props.addCard(title, newCard);
+    this.setState({
+           question: "",
+           answer: "",
+           errors: ""
+       });
   }
 
   render () {
     console.log('new card form props', this.props);
     console.log('new card state', this.state);
+    const title = this.props.navigation.state.params.title;
     return (
       <KeyboardAwareScrollView>
-      <View style={styles.container}>
 
+      <View style={styles.container}>
+        
           <TextInput
             style={styles.question}
             placeholder='Question'
@@ -68,9 +78,12 @@ const styles = StyleSheet.create({
     // backgroundColor: white
   },
   title: {
-    fontSize: 29,
+    fontSize: 35,
+
     color: blue,
-    justifyContent: "flex-start",
+
+    borderBottomWidth: 3,
+    borderBottomColor: blue,
 
   },
   question: {
@@ -84,7 +97,8 @@ const styles = StyleSheet.create({
   },
   answer: {
     fontSize: 23,
-    flex: .55,
+    flex: 1,
+    flexDirection: 'row',
     color: blue,
     padding: 30,
     margin: 25,

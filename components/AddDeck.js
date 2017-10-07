@@ -5,6 +5,7 @@ import { addDeck } from '../actions'
 import { blue, white } from '../utils/colors';
 import { NavigationActions } from 'react-navigation'
 import { submitDeck } from '../utils/api';
+import { FormValidationMessage } from 'react-native-elements';
 
 function SubmitBtn ({ onPress }) {
   return (
@@ -20,12 +21,19 @@ class AddDeck extends Component {
   state = {
     title: "",
     questions: [],
+    errors: ""
   }
 
   submit = () => {
 
     const key = this.state.title
-    const deck = this.state
+    const deck = { 'title': this.state.title,
+                   'questions': this.state.questions}
+
+    if (!key) {
+      this.setState({errors: 'Please fill out a deck title'});
+      return
+    }
 
     this.props.addDeck({
       [key]: deck
@@ -65,7 +73,9 @@ class AddDeck extends Component {
             </View>
 
         <SubmitBtn onPress={this.submit} />
-
+          <FormValidationMessage>
+              {this.state.errors}
+          </FormValidationMessage>
       </View>
 
     )
