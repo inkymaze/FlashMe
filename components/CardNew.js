@@ -38,7 +38,7 @@ class CardNew extends React.Component {
       <KeyboardAwareScrollView>
 
       <View style={styles.container}>
-        
+          <Text style={styles.title}>{title}</Text>
           <TextInput
             style={styles.question}
             placeholder='Question'
@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
   answer: {
     fontSize: 23,
     flex: 1,
-    flexDirection: 'row',
     color: blue,
     padding: 30,
     margin: 25,

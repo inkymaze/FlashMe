@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Text, TextInput, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native'
+import { View, TouchableOpacity, Text,
+  TextInput, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import { addDeck } from '../actions'
 import { blue, white } from '../utils/colors';
@@ -58,26 +59,24 @@ class AddDeck extends Component {
     const {title} = this.state
     console.log('add deck props', this.props);
     return (
-
-      <View style={styles.container}>
-
-        <Text style={[styles.center, {color: blue}]}>What is the title of your new FlashMe deck?</Text>
-
-        <View style={styles.row}>
-
-              <TextInput
-                style={styles.center}
-                placeholder='Deck Title'
-                value={title}
-                onChangeText={(title) => {this.setState({ title })}}/>
-            </View>
-
-        <SubmitBtn onPress={this.submit} />
-          <FormValidationMessage>
-              {this.state.errors}
-          </FormValidationMessage>
-      </View>
-
+      <KeyboardAvoidingView behavior='padding' style={styles.container}>
+        <View style={styles.container}>
+          <Text style={[styles.center, {color: blue}, {fontSize: 30} ]}>
+            What's the title of your new FlashMe deck?
+          </Text>
+          <View style={styles.row}>
+            <TextInput
+              style={styles.center}
+              placeholder='Deck Title'
+              value={title}
+              onChangeText={(title) => {this.setState({ title })}}/>
+          </View>
+          <SubmitBtn onPress={this.submit} />
+            <FormValidationMessage>
+                {this.state.errors}
+            </FormValidationMessage>
+        </View>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -85,13 +84,16 @@ class AddDeck extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    alignItems: "center",
+    justifyContent: 'center',
+
     backgroundColor: white
   },
   row: {
     flexDirection: 'row',
     flex: 1,
     alignItems: 'center',
+    alignSelf: "center",
   },
   iosSubmitBtn: {
     backgroundColor: blue,
@@ -118,9 +120,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   center: {
-    flex: 1,
+    fontSize: 30,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
     marginLeft: 30,
     marginRight: 30,
   },
