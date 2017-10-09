@@ -80,6 +80,7 @@ class Quiz extends React.Component {
     console.log('quiz props', this.props);
     const { questions, title } = this.props;
     const { correct, incorrect, currentCard, finished } = this.state;
+
     if (finished) return (
       <View style={styles.container}>
       <QuizSummary
@@ -106,7 +107,7 @@ class Quiz extends React.Component {
         <QuizCard
           currentScore={{correct, incorrect}}
           question={questions[currentCard]}
-
+          questionsRemaining={questions.length - currentCard}
           onCorrect={this.handleCorrect.bind(this)}
           onIncorrect={this.handleIncorrect.bind(this)} />
 

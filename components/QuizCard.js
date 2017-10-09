@@ -32,14 +32,14 @@ class QuizCard extends React.Component {
    }
 
   render () {
-    const { onCorrect, onIncorrect, currentScore, question} = this.props;
+    const { onCorrect, onIncorrect,
+      currentScore, question, questionsRemaining
+      } = this.props;
 
     return (
       <View style={styles.container}>
 
-        <Text style={styles.scoreCount}>
-          {currentScore.correct} correct / {currentScore.incorrect} incorrect
-        </Text>
+
 
         <FlipCard style={{flex: 1}}
                     velocity={2} // Velocity makes it move
@@ -56,6 +56,12 @@ class QuizCard extends React.Component {
                 raised
                 onPress={onIncorrect}
                 title='Incorrect'/>
+        <Text style={styles.quizHeader}>
+          {currentScore.correct} correct / {currentScore.incorrect} incorrect
+        </Text>
+        <Text style={styles.quizHeader}>
+          -- {questionsRemaining} question(s) left --
+        </Text>
       </View>
     );
   }

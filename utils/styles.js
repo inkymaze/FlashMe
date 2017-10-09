@@ -81,8 +81,11 @@ export default StyleSheet.create({
     fontSize: 18,
     color: blue,
   },
-  scoreCount: {
+  quizHeader: {
     fontSize: 18,
     color: blue,
+    margin: 4,
+    alignItems: 'center',
+    alignSelf: 'center',
   }
 });
