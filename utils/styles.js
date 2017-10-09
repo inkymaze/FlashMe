@@ -24,9 +24,9 @@ export default StyleSheet.create({
     height: 100,
     flex: 1,
     backgroundColor: white,
-    borderWidth: 1.5,
+    borderWidth: 2.5,
     borderRadius: 7,
-    padding: 5,
+
     margin: 10,
     borderColor: lightPurp
   },
@@ -72,4 +72,17 @@ export default StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
   },
+  cardtext: {
+    flex: 1,
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+    fontSize: 18,
+    color: blue,
+  },
+  scoreCount: {
+    fontSize: 18,
+    color: blue,
+  }
 });

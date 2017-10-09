@@ -1,21 +1,23 @@
 import React from 'react';
-import { View, Text, Alert, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View,
+         Text,
+         Alert,
+         StyleSheet,
+         TouchableOpacity,
+         Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { white, blue } from '../utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 
-
-
 class DeckDetail extends React.Component {
-
 
   validQuiz() {
     if (this.props.deck.questions.length !== 0) {
         this.props.navigation.navigate('Quiz',
-        { questions: this.props.deck.questions, title: this.props.deck.title })
+        { questions: this.props.deck.questions, title: this.props.deck.title });
     } else {
-      Alert.alert("Add questions first!")
+      Alert.alert("Add questions first!");
     }
   }
 
@@ -76,15 +78,12 @@ const styles = StyleSheet.create({
     color: blue,
   },
   detailOptions: {
-
     paddingTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
-
   },
   createQuestion: {
     padding: 50,
-
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -113,7 +112,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
   },
-
 });
 
 
@@ -123,6 +121,5 @@ function mapStateToProps ({decks}, ownProps) {
     deck: decks[title]
   };
 }
-
 
 export default connect(mapStateToProps)(DeckDetail);

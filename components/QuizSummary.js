@@ -5,12 +5,9 @@ import styles from '../utils/styles';
 
 class QuizSummary extends React.Component {
 
-
-
-
 render() {
   const { correct, incorrect, title, result } = this.props;
-  console.log('quiz sum', this.props);
+
   return (
       <View style={styles.container}>
         <Text style={[styles.center, {color: blue}, {fontSize: 29}]}>
@@ -20,17 +17,8 @@ render() {
           {incorrect} incorrect answer(s)
         </Text>
         <Text style={[styles.center, {color: blue}, {fontSize: 32}]}>
-          You got {result}% correct
+          {result}% correct
         </Text>
-
-        <TouchableOpacity
-                          >
-          <Text style={styles.submitBtnText}>Restart</Text>
-        </TouchableOpacity>
-
-
-
-
       </View>
     );
   }
