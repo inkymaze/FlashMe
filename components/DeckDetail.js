@@ -7,7 +7,7 @@ import { View,
          Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { white, blue } from '../utils/colors';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 class DeckDetail extends React.Component {

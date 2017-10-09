@@ -7,10 +7,6 @@ import { requestDecks } from '../actions';
 import _ from 'lodash';
 
 class DeckList extends React.Component {
-  constructor(props){
-    super(props)
-    // this.selectDeck = this.selectDeck.bind(this)
-  }
   state = {
     ready: false,
   }
@@ -20,16 +16,10 @@ class DeckList extends React.Component {
       .then(() => this.setState(() => ({ready: true})))
   }
 
-  // selectDeck(title) {
-  //   console.log('selecDEck title',title);
-  // }
-
-
   // Ask udacity why this doesnt work
   // renderItem({item}) {... but the below does
 
   renderItem = ({item}) => {
-      // console.log('renderDeck',props);
       let question = item.questionCount === 1 ? 'question' : 'questions';
        return (
          <TouchableOpacity style={styles.deck}
@@ -42,30 +32,9 @@ class DeckList extends React.Component {
        );
    }
 
-//
-//    return _.map(sortedPosts, post => {
-//
-//   return (
-//     <ul className='post-info' key={post.id}>
-//       <PostsDetail post={post} key={post.id} count={this.commentCount(post.id)}/>
-//         <div className='vote-buttons'>
-//           <button onClick={() => {this.updateVoteScore(post.id, 'upVote');}}>Upvote</button>
-//           <button onClick={() => {this.updateVoteScore(post.id, 'downVote');}}>Downvote</button>
-//         </div>
-//     </ul>
-//   );
-//
-// });
-
-
-
 
   render() {
     const { ready } = this.state
-
-    console.log('Deck list props',this.props);
-    // console.log('deck list state', this.state);
-
     const decks = _.map(this.props.decks, deck => {
            return {
                title: deck.title,
@@ -106,7 +75,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderBottomWidth: 1,
     borderBottomColor: blue,
-},
+  },
   title: {
     fontSize: 29,
     color: blue,
@@ -115,7 +84,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: blue
   }
-
 });
 
 const mapStateToProps = ({decks}) => ({

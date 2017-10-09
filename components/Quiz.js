@@ -5,7 +5,6 @@ import { blue, white } from '../utils/colors';
 import { NavigationActions } from 'react-navigation'
 import QuizCard from './QuizCard';
 import QuizSummary from './QuizSummary';
-// import { AppLoading} from 'expo'
 
 function SubmitBtn ({ onPress }) {
   return (
@@ -29,23 +28,6 @@ class Quiz extends React.Component {
     title: 'Quiz'
   };
 
-
-
-  restartQuiz = () => {
-    // reset score
-    // sbuffle cards?
-    //
-  }
-  //
-  // backToDeck = () => {
-  //   this.props.navigation.navigate(
-  //     'DeckDetail', { title: item.title })
-  // }
-
-  renderCards = () => {
-
-  }
-
   handleCorrect = () => {
     this.setState(prevState => ({
       correct: prevState.correct + 1,
@@ -63,13 +45,13 @@ class Quiz extends React.Component {
 
   quizStatus() {
     this.setState(
-      { finished: (this.state.currentCard + 1 === this.props.questions.length)
-
+      { finished:
+        (this.state.currentCard + 1 === this.props.questions.length)
     })
   }
 
   percentCorrect() {
-    const totalQuestions = this.state.correct + this.state.incorrect
+    const totalQuestions = this.state.correct + this.state.incorrect;
     return (
       (this.state.correct / totalQuestions) * 100
     )
@@ -77,7 +59,6 @@ class Quiz extends React.Component {
 
 
   render () {
-    console.log('quiz props', this.props);
     const { questions, title } = this.props;
     const { correct, incorrect, currentCard, finished } = this.state;
 
@@ -92,9 +73,17 @@ class Quiz extends React.Component {
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
             onPress={() =>
               this.props.navigation.navigate('Quiz',
-              {questions: this.props.questions,
-              title: this.props.title })}>
+              {questions: questions,
+              title: title })}>
             <Text style={styles.submitBtnText}>Restart Quiz</Text>
+        </TouchableOpacity>
+        <Text style={{margin: 3}}></Text>
+        <TouchableOpacity
+            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
+            onPress={() => this.props.navigation.navigate(
+              'DeckDetail', { title: title }
+           )}>
+            <Text style={styles.submitBtnText}>Back to Deck</Text>
         </TouchableOpacity>
       </View>
     )

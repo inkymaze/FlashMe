@@ -51,7 +51,7 @@ class CardNew extends React.Component {
             placeholder='Answer'
             value={this.state.answer}
             onChangeText={(input) => { this.setState({ answer: input }) }}
-            multiline = {true}
+            
           />
         <TouchableOpacity style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
                 onPress={this.addCardToDeck}>
