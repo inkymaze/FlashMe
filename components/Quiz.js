@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import { blue, white } from '../utils/colors';
 import { NavigationActions } from 'react-navigation'
 import QuizCard from './QuizCard';
+import QuizSummary from './QuizSummary';
 // import { AppLoading} from 'expo'
 
 function SubmitBtn ({ onPress }) {
@@ -67,11 +68,35 @@ class Quiz extends React.Component {
     })
   }
 
+  percentCorrect() {
+    const totalQuestions = this.state.correct + this.state.incorrect
+    return (
+      (this.state.correct / totalQuestions) * 100
+    )
+  }
+
 
   render () {
-    console.log('quiz state', this.state);
-    const { questions } = this.props;
+    console.log('quiz props', this.props);
+    const { questions, title } = this.props;
     const { correct, incorrect, currentCard, finished } = this.state;
+    if (finished) return (
+      <View style={styles.container}>
+      <QuizSummary
+        result={this.percentCorrect()}
+        correct={correct}
+        incorrect={incorrect}
+        title={title}/>
+        <TouchableOpacity
+            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
+            onPress={() =>
+              this.props.navigation.navigate('Quiz',
+              {questions: this.props.questions,
+              title: this.props.title })}>
+            <Text style={styles.submitBtnText}>Restart Quiz</Text>
+        </TouchableOpacity>
+      </View>
+    )
 
 
 
@@ -81,7 +106,7 @@ class Quiz extends React.Component {
         <QuizCard
           currentScore={{correct, incorrect}}
           question={questions[currentCard]}
-        
+
           onCorrect={this.handleCorrect.bind(this)}
           onIncorrect={this.handleIncorrect.bind(this)} />
 
@@ -143,7 +168,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state, ownProps) {
   return {
-    questions: ownProps.navigation.state.params.questions
+    questions: ownProps.navigation.state.params.questions,
+    title: ownProps.navigation.state.params.title
   };
 }
 

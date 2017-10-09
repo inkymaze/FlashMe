@@ -1,5 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View,
+        Text,
+        StyleSheet,
+        TouchableOpacity,
+        ScrollView } from 'react-native';
 import styles from '../utils/styles';
 import {Button} from 'react-native-elements';
 import FlipCard from 'react-native-flip-card-view';
@@ -30,7 +34,7 @@ class QuizCard extends React.Component {
       <View style={styles.container}>
 
         <Text>Score: {currentScore.correct} correct / {currentScore.incorrect} incorrect</Text>
-        
+
         <FlipCard style={{flex: 1}}
                     velocity={2} // Velocity makes it move
                     tension={5} // Slow

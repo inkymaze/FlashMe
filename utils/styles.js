@@ -68,6 +68,7 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
     marginLeft: 30,
     marginRight: 30,
   },
