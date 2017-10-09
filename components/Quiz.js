@@ -46,11 +46,25 @@ class Quiz extends React.Component {
   }
 
   handleCorrect = () => {
-
+    this.setState(prevState => ({
+      correct: prevState.correct + 1,
+      currentCard: prevState.currentCard + 1
+    }));
+    this.quizStatus();
   }
 
   handleIncorrect = () => {
+    this.setState(prevState => ({
+      incorrect: prevState.incorrect + 1,
+      currentCard: prevState.currentCard + 1}));
+    this.quizStatus();
+  }
 
+  quizStatus() {
+    this.setState(
+      { finished: (this.state.currentCard + 1 === this.props.questions.length)
+
+    })
   }
 
 
@@ -62,15 +76,14 @@ class Quiz extends React.Component {
 
 
     return (
-      <View>
-        <Text>Quiz FORM </Text>
+      <View style={styles.container}>
+
         <QuizCard
-          
+          currentScore={{correct, incorrect}}
           question={questions[currentCard]}
-          onCorrect={this.handleCorrect}
-          onIncorrect={this.handleIncorrect} />
-
-
+        
+          onCorrect={this.handleCorrect.bind(this)}
+          onIncorrect={this.handleIncorrect.bind(this)} />
 
         <SubmitBtn onPress={this.restartQuiz}  />
 
