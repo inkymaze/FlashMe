@@ -42,19 +42,6 @@ class DeckList extends React.Component {
        );
    }
 
-
- // renderItems() {
- //   return _.map(this.props.decks, deck => {
- //     console.log('indivi', deck);
- //     return (
- //      <View key={deck}>
- //        <Text >{deck.title}</Text>
- //
- //      </View>
- //      )
- //    })
- //  }
-
 //
 //    return _.map(sortedPosts, post => {
 //

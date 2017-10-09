@@ -7,6 +7,8 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 class DeckDetail extends React.Component {
 
+
+
   render() {
     const {deck} = this.props;
     let question = deck.questions.length === 1 ? 'question' : 'questions';
@@ -20,7 +22,7 @@ class DeckDetail extends React.Component {
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
             onPress={() => this.props.navigation.navigate(
               'Quiz',
-              { title: deck.title })}>
+              { questions: deck.questions })}>
               <Text style={styles.submitBtnText}>Start Quiz</Text>
           </TouchableOpacity>
           <TouchableOpacity

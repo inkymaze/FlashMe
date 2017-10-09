@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput, Platform, KeyboardAvoidingView} from 'react-native';
+import {View, Text, StyleSheet, Dimensions,
+  TouchableOpacity, TextInput, Platform, KeyboardAvoidingView} from 'react-native';
 import { Button, FormValidationMessage } from 'react-native-elements';
 import {connect} from 'react-redux';
 import { addCard } from '../actions';
@@ -35,7 +36,7 @@ class CardNew extends React.Component {
     console.log('new card state', this.state);
     const title = this.props.navigation.state.params.title;
     return (
-      <KeyboardAwareScrollView>
+      <KeyboardAvoidingView behavior='padding' style={styles.container}>
 
       <View style={styles.container}>
           <Text style={styles.title}>{title}</Text>
@@ -61,7 +62,7 @@ class CardNew extends React.Component {
         </FormValidationMessage>
 
       </View>
-    </KeyboardAwareScrollView>
+    </KeyboardAvoidingView>
     );
   }
 }

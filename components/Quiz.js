@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, TouchableOpacity, Platform} from 'react-native';
 import {connect} from 'react-redux';
 import { blue, white } from '../utils/colors';
 import { NavigationActions } from 'react-navigation'
+import QuizCard from './QuizCard';
+// import { AppLoading} from 'expo'
 
 function SubmitBtn ({ onPress }) {
   return (
@@ -16,10 +18,15 @@ function SubmitBtn ({ onPress }) {
 
 class Quiz extends React.Component {
   state = {
+    currentCard: 0,
     correct: 0,
     incorrect: 0,
-    
+    finished: false
+
   }
+  static navigationOptions = {
+    title: 'Quiz'
+  };
 
 
 
@@ -34,23 +41,40 @@ class Quiz extends React.Component {
   //     'DeckDetail', { title: item.title })
   // }
 
+  renderCards = () => {
+
+  }
+
+  handleCorrect = () => {
+
+  }
+
+  handleIncorrect = () => {
+
+  }
 
 
   render () {
-    console.log('quiz props', this.props);
+    console.log('quiz state', this.state);
+    const { questions } = this.props;
+    const { correct, incorrect, currentCard, finished } = this.state;
+
+
+
     return (
       <View>
         <Text>Quiz FORM </Text>
+        <QuizCard
+          
+          question={questions[currentCard]}
+          onCorrect={this.handleCorrect}
+          onIncorrect={this.handleIncorrect} />
+
+
 
         <SubmitBtn onPress={this.restartQuiz}  />
 
-        <TouchableOpacity style={styles.deck}
-          onPress={() =>
-            this.props.navigation.dispatch(NavigationActions.back({key: 'DeckDetail'})
-         )}>
-            <Text >Back to Deck</Text>
 
-        </TouchableOpacity>
 
       </View>
     );
@@ -104,5 +128,11 @@ const styles = StyleSheet.create({
 
 
 
+function mapStateToProps (state, ownProps) {
+  return {
+    questions: ownProps.navigation.state.params.questions
+  };
+}
 
-export default Quiz;
+
+export default connect(mapStateToProps)(Quiz)
