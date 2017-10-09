@@ -1,4 +1,4 @@
-import { white, blue } from './colors';
+import { white, blue, lightPurp } from './colors';
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -20,6 +20,16 @@ export default StyleSheet.create({
     marginLeft: 40,
     marginRight: 40,
   },
+  quizCard: {
+    height: 100,
+    flex: 1,
+    backgroundColor: white,
+    borderWidth: 1.5,
+    borderRadius: 7,
+    padding: 5,
+    margin: 10,
+    borderColor: lightPurp
+  },
   AndroidSubmitBtn: {
     backgroundColor: blue,
     padding: 10,
@@ -31,6 +41,24 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  answerBtn: {
+    backgroundColor: 'red',
+    padding: 10,
+    borderRadius: 7,
+    height: 45,
+    marginLeft: 40,
+    marginRight: 40,
+    marginTop: 9,
+  },
+  questionBtn: {
+    backgroundColor: blue,
+    padding: 10,
+    borderRadius: 7,
+    height: 45,
+    marginLeft: 40,
+    marginRight: 40,
+  },
+
   submitBtnText: {
     color: white,
     fontSize: 22,

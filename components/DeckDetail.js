@@ -1,15 +1,26 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, Alert, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { white, blue } from '../utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 
+
+
 class DeckDetail extends React.Component {
 
 
+  validQuiz() {
+    if (this.props.deck.questions.length != 0) {
+        this.props.navigation.navigate('Quiz',{ questions: this.props.deck.questions })
+    } else {
+      Alert.alert("Add questions first!")
+    }
+  }
 
   render() {
+
+
     const {deck} = this.props;
     let question = deck.questions.length === 1 ? 'question' : 'questions';
     console.log('deck detail props', this.props);
@@ -20,9 +31,7 @@ class DeckDetail extends React.Component {
         <View style={styles.detailOptions}>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-            onPress={() => this.props.navigation.navigate(
-              'Quiz',
-              { questions: deck.questions })}>
+            onPress={() => this.validQuiz()}>
               <Text style={styles.submitBtnText}>Start Quiz</Text>
           </TouchableOpacity>
           <TouchableOpacity
