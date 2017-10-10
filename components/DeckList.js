@@ -50,6 +50,7 @@ class DeckList extends React.Component {
 
         <FlatList
          data={decks}
+         showsVerticalScrollIndicator={false}
          renderItem={this.renderItem}
          keyExtractor={item => item.title}
        />

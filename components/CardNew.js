@@ -13,7 +13,12 @@ class CardNew extends React.Component {
     answer: "",
     errors: ""
   }
-  //
+
+  static navigationOptions = {
+    title: 'Back to Deck',
+    headerTitleStyle: { color: blue }
+  };
+
   addCardToDeck = () => {
     const { question, answer } = this.state;
     const title = this.props.navigation.state.params.title;
@@ -32,7 +37,7 @@ class CardNew extends React.Component {
   }
 
   render () {
-  
+
     const title = this.props.navigation.state.params.title;
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -67,24 +72,17 @@ class CardNew extends React.Component {
 }
 
 
-const { width } = Dimensions.get('window');
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: 'center'
-
-    // backgroundColor: white
   },
   title: {
     fontSize: 35,
-
     color: blue,
-
     borderBottomWidth: 3,
     borderBottomColor: blue,
-
   },
   question: {
     fontSize: 25,

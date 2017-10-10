@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
   },
   center: {
     fontSize: 30,
+    paddingTop: 25,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',

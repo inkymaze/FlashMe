@@ -38,13 +38,10 @@ class QuizCard extends React.Component {
 
     return (
       <View style={styles.container}>
-
-
-
         <FlipCard style={{flex: 1}}
-                    velocity={2} // Velocity makes it move
-                    tension={5} // Slow
-                    friction={1} // Oscillate a lot
+                    velocity={2}
+                    tension={5}
+                    friction={1}
                     renderFront={this._renderFront()}
                     renderBack={this._renderBack()}/>
 

@@ -25,7 +25,8 @@ class Quiz extends React.Component {
 
   }
   static navigationOptions = {
-    title: 'Quiz'
+    title: 'Quiz',
+    headerTitleStyle: { color: blue }
   };
 
   handleCorrect = () => {
