@@ -7,7 +7,7 @@ import { addCard } from '../actions';
 import { white, blue } from '../utils/colors';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import styles from '../utils/styles';
-
+import { submitCard } from '../utils/api';
 
 class CardNew extends React.Component {
   state = {
@@ -24,7 +24,7 @@ class CardNew extends React.Component {
 
   addCardToDeck = () => {
     const { question, answer } = this.state;
-    const title = this.props.navigation.state.params.title;
+    const {title, questions} = this.props.navigation.state.params;
     if (!question || !answer) {
       this.setState({errors: 'Please fill out both fields'});
       return
@@ -38,10 +38,15 @@ class CardNew extends React.Component {
            errors: ""
        });
 
+    questions.push(card)
+    card = { 'title': title,
+                   'questions': questions}
+
+    submitCard({title, card});
   }
 
   render () {
-
+  
     const title = this.props.navigation.state.params.title;
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>

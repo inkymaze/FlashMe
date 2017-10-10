@@ -1,4 +1,5 @@
 import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from '../actions'
+import { submitDeck } from '../utils/api';
 
 
 const DecksReducer = (state = {}, action) => {
@@ -17,12 +18,7 @@ const DecksReducer = (state = {}, action) => {
         ...action.deck
       }
     case ADD_CARD:
-      console.log('add Card reducer ');
-      console.log('state ', state);
-      console.log('action.title', action.title);
-      console.log('[action.title]', [action.title]);
-      console.log('action.card', action.card);
-      console.log('state.questions', ...state[action.title].questions);
+    
       return {
         ...state,
         [action.title]: {

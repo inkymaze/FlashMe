@@ -7,7 +7,13 @@ export function fetchDeckResults() {
 }
 
 export function submitDeck ({ key, deck }) {
-  return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
+  return AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify({
     [key]: deck
+  }));
+}
+
+export function submitCard ({title, card}) {
+  return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
+    [title]: card
   }));
 }

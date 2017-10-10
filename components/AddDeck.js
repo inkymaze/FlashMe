@@ -21,7 +21,6 @@ function SubmitBtn ({ onPress }) {
 class AddDeck extends Component {
   state = {
     title: "",
-    questions: [],
     errors: ""
   }
 
@@ -40,7 +39,7 @@ class AddDeck extends Component {
       [key]: deck
     })
 
-    this.setState(() => ({ title: "", questions: [] }))
+    this.setState(() => ({ title: "" }))
 
     this.toDeck(key)
 
@@ -56,7 +55,7 @@ class AddDeck extends Component {
 
   render() {
     const {title} = this.state
-    console.log('add deck props', this.props);
+    
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <View style={styles.container}>

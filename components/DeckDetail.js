@@ -38,7 +38,7 @@ class DeckDetail extends React.Component {
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate(
               'CardNew',
-              { title: deck.title })}>
+              { title: deck.title, questions: deck.questions })}>
               <View style={styles.createQuestion}>
                 <FontAwesome name='edit' size={30} color={ blue } />
                 <Text style={styles.question}>Add Question</Text>
