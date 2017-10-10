@@ -39,7 +39,8 @@ class DeckList extends React.Component {
 
 
   render() {
-    
+    console.log('deck list', this.props);
+
     const { ready } = this.state
     const decks = _.map(this.props.decks, deck => {
            return {

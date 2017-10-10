@@ -29,7 +29,7 @@ class AddDeck extends Component {
 
     const key = this.state.title
     const deck = { 'title': this.state.title,
-                   'questions': this.state.questions}
+                   'questions': []}
 
     if (!key) {
       this.setState({errors: 'Please fill out a deck title'});

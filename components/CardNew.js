@@ -7,7 +7,7 @@ import { addCard } from '../actions';
 import { white, blue } from '../utils/colors';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import styles from '../utils/styles';
-import { submitCard } from '../utils/api';
+
 
 class CardNew extends React.Component {
   state = {
@@ -30,16 +30,14 @@ class CardNew extends React.Component {
       return
     }
 
-    let newCard = { 'question': question, 'answer': answer }
-    this.props.addCard(title, newCard);
+    let card = { 'question': question, 'answer': answer }
+    this.props.addCard(title, card);
     this.setState({
            question: "",
            answer: "",
            errors: ""
        });
-   const deck = { 'title': title,
-                  'questions': [newCard]}
-    submitCard({ title, deck })
+
   }
 
   render () {
