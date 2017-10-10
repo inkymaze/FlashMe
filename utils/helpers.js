@@ -1,15 +1,8 @@
-// getDecks: return all of the decks along with their titles, questions, and answers.
-// getDeck: take in a single id argument and return the deck associated with that id.
-// saveDeckTitle: take in a single title argument and add it to the decks.
-// addCardToDeck: take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
+import React from 'react'
 import { Notifications, Permissions } from 'expo';
-import React from 'react';
 import { AsyncStorage } from 'react-native';
 
 const NOTIFICATION_KEY = "FlashMe:notifications";
-
-
-
 
 export function clearLocalNotification () {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
@@ -45,9 +38,9 @@ export function setLocalNotification () {
 
               let tomorrow = new Date();
               tomorrow.setDate(tomorrow.getDate() + 1);
-              tomorrow.setHours(20);
-              tomorrow.setMinutes(0);
-              
+              tomorrow.setHours(17);
+              tomorrow.setMinutes(50);
+
               Notifications.scheduleLocalNotificationAsync(
                 createNotification(),
                 {

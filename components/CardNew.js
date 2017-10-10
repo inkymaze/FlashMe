@@ -32,8 +32,7 @@ class CardNew extends React.Component {
   }
 
   render () {
-    console.log('new card form props', this.props);
-    console.log('new card state', this.state);
+  
     const title = this.props.navigation.state.params.title;
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -51,7 +50,7 @@ class CardNew extends React.Component {
             placeholder='Answer'
             value={this.state.answer}
             onChangeText={(input) => { this.setState({ answer: input }) }}
-            
+            multiline={true}
           />
         <TouchableOpacity style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
                 onPress={this.addCardToDeck}>

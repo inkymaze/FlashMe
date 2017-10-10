@@ -54,9 +54,6 @@ class AddDeck extends Component {
 
   }
 
-
-
-
   render() {
     const {title} = this.state
     console.log('add deck props', this.props);
@@ -68,7 +65,7 @@ class AddDeck extends Component {
           </Text>
           <View style={styles.row}>
             <TextInput
-              style={styles.center}
+              style={[styles.center, {color: blue}]}
               placeholder='Deck Title'
               value={title}
               onChangeText={(title) => {this.setState({ title })}}/>
