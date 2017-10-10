@@ -22,11 +22,9 @@ class DeckDetail extends React.Component {
   }
 
   render() {
-
-
     const {deck} = this.props;
     let question = deck.questions.length === 1 ? 'question' : 'questions';
-    console.log('deck detail props', this.props);
+
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{deck.title}</Text>

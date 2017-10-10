@@ -76,10 +76,11 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     alignSelf: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    fontSize: 18,
+    marginLeft: 5,
+    marginRight: 5,
+    fontSize: 24,
     color: blue,
+    marginBottom: 0
   },
   quizHeader: {
     fontSize: 18,

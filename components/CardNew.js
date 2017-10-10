@@ -16,7 +16,8 @@ class CardNew extends React.Component {
 
   static navigationOptions = {
     title: 'Back to Deck',
-    headerTitleStyle: { color: blue }
+    headerTitleStyle: { color: blue },
+
   };
 
   addCardToDeck = () => {

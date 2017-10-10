@@ -11,6 +11,11 @@ class DeckList extends React.Component {
     ready: false,
   }
 
+  static navigationOptions = {
+    title: 'My FlashMe Decks',
+    headerTitleStyle: { color: blue }
+  };
+
   componentDidMount() {
     this.props.requestDecks()
       .then(() => this.setState(() => ({ready: true})))
