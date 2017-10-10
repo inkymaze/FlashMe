@@ -16,16 +16,11 @@ const DecksReducer = (state = {}, action) => {
         ...action.deck
       }
     case ADD_CARD:
-    console.log('adding card');
-    console.log('state', state);
-    console.log('action.card = ', action.card);
-    console.log('action.title = ', action.title);
-
       return {
         ...state,
         [action.title]: {
-         title: [action.title],
-         questions: [[action.card], ...state[action.title].questions]
+         title: action.title,
+         questions: [action.card], ...state[action.title].questions
         }
       }
     default:

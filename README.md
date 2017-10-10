@@ -13,4 +13,4 @@ This flash card studying application was built using React Native.
 
 ## Tested On
 
-The application was tested on iPhone 6s
+The application was tested on iPhone 6s and iOS emulator.

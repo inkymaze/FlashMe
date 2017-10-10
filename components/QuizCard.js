@@ -10,12 +10,12 @@ import FlipCard from 'react-native-flip-card-view';
 
 class QuizCard extends React.Component {
 
-    _renderFront() {
-      return (
-       <View style={styles.quizCard}>
-         <Text style={styles.cardtext}>
-            {this.props.question[0].question}
-         </Text>
+  _renderFront() {
+    return (
+      <View style={styles.quizCard}>
+        <Text style={styles.cardtext}>
+          {this.props.question}
+        </Text>
          <Text style={[styles.cardtext, {justifyContent: 'flex-end'}]}>
           (tap to show answer)
          </Text>
@@ -26,12 +26,13 @@ class QuizCard extends React.Component {
    _renderBack() {
      return (
        <View style={styles.quizCard}>
-           <Text style={styles.cardtext}>{this.props.question[0].answer}</Text>
+           <Text style={styles.cardtext}>{this.props.answer}</Text>
        </View>
      );
    }
 
   render () {
+    
     const { onCorrect, onIncorrect,
       currentScore, question, questionsRemaining
       } = this.props;

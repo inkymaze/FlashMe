@@ -95,7 +95,8 @@ class Quiz extends React.Component {
 
         <QuizCard
           currentScore={{correct, incorrect}}
-          question={questions[currentCard]}
+          question={questions[currentCard].question}
+          answer={questions[currentCard].answer}
           questionsRemaining={questions.length - currentCard}
           onCorrect={this.handleCorrect.bind(this)}
           onIncorrect={this.handleIncorrect.bind(this)} />
