@@ -8,7 +8,7 @@ import { View,
 import { connect } from 'react-redux';
 import { white, blue } from '../utils/colors';
 import { FontAwesome } from '@expo/vector-icons';
-
+import styles from '../utils/styles';
 
 class DeckDetail extends React.Component {
 
@@ -50,68 +50,6 @@ class DeckDetail extends React.Component {
 
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: white
-  },
-  title: {
-    fontSize: 37,
-    color: blue,
-    justifyContent: "flex-start",
-
-  },
-  question: {
-    fontSize: 22,
-    color: blue,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 9
-  },
-  addCard: {
-    justifyContent: "flex-end",
-    color: blue,
-  },
-  detailOptions: {
-    paddingTop: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  createQuestion: {
-    padding: 50,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  iosSubmitBtn: {
-    backgroundColor: blue,
-    padding: 10,
-    borderRadius: 7,
-    height: 50,
-    marginLeft: 40,
-    marginRight: 40,
-  },
-  AndroidSubmitBtn: {
-    backgroundColor: blue,
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 50,
-    borderRadius: 2,
-    alignSelf: 'flex-end',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  submitBtnText: {
-    color: white,
-    fontSize: 22,
-    textAlign: 'center',
-  },
-});
-
 
 function mapStateToProps ({decks}, ownProps) {
   const { title } = ownProps.navigation.state.params;

@@ -32,7 +32,7 @@ class DeckList extends React.Component {
              'DeckDetail', { title: item.title }
           )}>
              <Text style={styles.title}>{item.title}</Text>
-             <Text style={styles.question}>{item.questionCount} {question}</Text>
+             <Text style={styles.questionCo}>{item.questionCount} {question}</Text>
          </TouchableOpacity>
        );
    }
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     fontSize: 29,
     color: blue,
   },
-  question: {
+  questionCo: {
     fontSize: 17,
     color: blue
   }

@@ -5,7 +5,15 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: white
+    backgroundColor: white,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  createQuestion: {
+    padding: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   row: {
     flexDirection: 'row',
@@ -88,5 +96,52 @@ export default StyleSheet.create({
     margin: 4,
     alignItems: 'center',
     alignSelf: 'center',
-  }
+  },
+  detailOptions: {
+    paddingTop: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 37,
+    color: blue,
+    justifyContent: "flex-start",
+    alignItems: 'center'
+  },
+  cardTitle: {
+    fontSize: 35,
+    color: blue,
+    borderBottomWidth: 3,
+    borderBottomColor: blue,
+  },
+  question: {
+    fontSize: 22,
+    color: blue,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 9
+  },
+  addCard: {
+    justifyContent: "flex-end",
+    color: blue,
+  },
+  cardQuestion: {
+    fontSize: 25,
+    padding: 30,
+    color: blue,
+    borderBottomWidth: 1,
+    borderBottomColor: blue,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  answer: {
+    fontSize: 23,
+    flex: 1,
+    color: blue,
+    padding: 30,
+    margin: 25,
+    borderBottomColor: blue,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
