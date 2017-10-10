@@ -93,6 +93,10 @@ export default StyleSheet.create({
     color: blue,
     marginBottom: 0
   },
+  flipCard: {
+    flex: 1,
+
+  },
   quizHeader: {
     fontSize: 18,
     color: blue,

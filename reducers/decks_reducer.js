@@ -1,5 +1,6 @@
 import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from '../actions'
 
+
 const DecksReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
@@ -16,6 +17,8 @@ const DecksReducer = (state = {}, action) => {
         ...action.deck
       }
     case ADD_CARD:
+
+
       return {
         ...state,
         [action.title]: {

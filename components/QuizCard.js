@@ -13,33 +13,35 @@ class QuizCard extends React.Component {
   _renderFront() {
     return (
       <View style={styles.quizCard}>
+        <Text style={[styles.cardtext, {fontWeight: 'bold'}]}>Question:</Text>
         <Text style={styles.cardtext}>
           {this.props.question}
         </Text>
-         <Text style={[styles.cardtext, {justifyContent: 'flex-end'}]}>
-          (tap to show answer)
-         </Text>
-       </View>
-     );
-   }
+        <Text style={[styles.cardtext]}>
+         (tap to show answer)
+        </Text>
+      </View>
+    );
+  }
 
    _renderBack() {
      return (
-       <View style={styles.quizCard}>
-           <Text style={styles.cardtext}>{this.props.answer}</Text>
-       </View>
-     );
+      <View style={styles.quizCard}>
+        <Text style={[styles.cardtext, {fontWeight: 'bold'}]}>Answer:</Text>
+        <Text style={styles.cardtext}>{this.props.answer}</Text>
+      </View>
+    );
    }
 
   render () {
-    
+
     const { onCorrect, onIncorrect,
       currentScore, question, questionsRemaining
       } = this.props;
 
     return (
       <View style={styles.container}>
-        <FlipCard style={{flex: 1}}
+        <FlipCard style={styles.flipCard}
                     velocity={2}
                     tension={5}
                     friction={1}
