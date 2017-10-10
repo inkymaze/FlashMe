@@ -55,7 +55,7 @@ class Quiz extends React.Component {
   percentCorrect() {
     const totalQuestions = this.state.correct + this.state.incorrect;
     return (
-      (this.state.correct / totalQuestions) * 100
+      Math.round((this.state.correct / totalQuestions) * 100)
     )
   }
 
@@ -90,8 +90,6 @@ class Quiz extends React.Component {
       </View>
     )
 
-
-
     return (
       <View style={styles.container}>
 
@@ -103,9 +101,6 @@ class Quiz extends React.Component {
           onIncorrect={this.handleIncorrect.bind(this)} />
 
         <SubmitBtn onPress={this.restartQuiz}  />
-
-
-
       </View>
     );
   }

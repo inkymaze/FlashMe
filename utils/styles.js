@@ -20,6 +20,9 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  incorrectBtn: {
+    fontSize: 34,
+  },
   iosSubmitBtn: {
     backgroundColor: blue,
     padding: 10,
@@ -30,11 +33,11 @@ export default StyleSheet.create({
   },
   quizCard: {
     height: 100,
+    width: 250,
     flex: 1,
     backgroundColor: white,
     borderWidth: 2.5,
     borderRadius: 7,
-
     margin: 10,
     borderColor: lightPurp
   },
