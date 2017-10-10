@@ -47,15 +47,16 @@ class QuizCard extends React.Component {
                     friction={1}
                     renderFront={this._renderFront()}
                     renderBack={this._renderBack()}/>
-
-        <Button backgroundColor="green"
-                raised
-                onPress={onCorrect}
-                title='Correct'/>
-        <Button backgroundColor="red"
-                raised
-                onPress={onIncorrect}
-                title='Incorrect'/>
+        <View style={{flexDirection: 'row'}}>
+          <Button backgroundColor="green"
+                  raised
+                  onPress={onCorrect}
+                  title='Correct'/>
+          <Button backgroundColor="red"
+                  raised
+                  onPress={onIncorrect}
+                  title='Incorrect'/>
+        </View>
         <Text style={styles.quizHeader}>
           {currentScore.correct} correct / {currentScore.incorrect} incorrect
         </Text>
