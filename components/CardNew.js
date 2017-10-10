@@ -43,32 +43,30 @@ class CardNew extends React.Component {
     const title = this.props.navigation.state.params.title;
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
-
-      <View style={styles.container}>
-          <Text style={styles.cardTitle}>{title}</Text>
+        <View style={styles.container}>
+            <Text style={styles.cardTitle}>{title}</Text>
+            <TextInput
+              style={styles.cardQuestion}
+              placeholder='Question'
+              value={this.state.question}
+              onChangeText={(input) => { this.setState({ question: input }) }}
+            />
           <TextInput
-            style={styles.cardQuestion}
-            placeholder='Question'
-            value={this.state.question}
-            onChangeText={(input) => { this.setState({ question: input }) }}
-          />
-        <TextInput
-            style={styles.answer}
-            placeholder='Answer'
-            value={this.state.answer}
-            onChangeText={(input) => { this.setState({ answer: input }) }}
-            multiline={true}
-          />
-        <TouchableOpacity style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-                onPress={this.addCardToDeck}>
-              <Text style={styles.submitBtnText}>Add Card</Text>
-            </TouchableOpacity>
-        <FormValidationMessage>
-            {this.state.errors}
-        </FormValidationMessage>
-
-      </View>
-    </KeyboardAvoidingView>
+              style={styles.answer}
+              placeholder='Answer'
+              value={this.state.answer}
+              onChangeText={(input) => { this.setState({ answer: input }) }}
+              multiline={true}
+            />
+          <FormValidationMessage style={{padding: 18}}>
+              {this.state.errors}
+          </FormValidationMessage>
+          <TouchableOpacity style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
+              onPress={this.addCardToDeck}>
+            <Text style={styles.submitBtnText}>Add Card</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
     );
   }
 }
