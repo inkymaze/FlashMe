@@ -21,9 +21,6 @@ class DeckList extends React.Component {
       .then(() => this.setState(() => ({ready: true})))
   }
 
-  // Ask udacity why this doesnt work
-  // renderItem({item}) {... but the below does
-
   renderItem = ({item}) => {
       let question = item.questionCount === 1 ? 'question' : 'questions';
        return (
