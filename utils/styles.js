@@ -135,6 +135,7 @@ export default StyleSheet.create({
   cardQuestion: {
     fontSize: 25,
     padding: 30,
+    width: 100,
     color: blue,
     borderBottomWidth: 1,
     borderBottomColor: blue,
