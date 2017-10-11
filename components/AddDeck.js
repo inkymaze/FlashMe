@@ -55,7 +55,7 @@ class AddDeck extends Component {
 
   render() {
     const {title} = this.state
-    
+
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <View style={styles.container}>
@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     height: 45,
     borderRadius: 2,
-    alignSelf: 'flex-end',
     justifyContent: 'center',
     alignItems: 'center',
   },

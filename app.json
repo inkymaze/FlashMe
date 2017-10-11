@@ -1,5 +1,16 @@
 {
   "expo": {
-    "sdkVersion": "21.0.0"
+    "sdkVersion": "21.0.0",
+    "orientation": "portrait",
+    "name": "FlashMe",
+    "description": "Flash card quizzes on the go",
+    "slug": "flashme",
+    "version": "1.0",
+    "ios": {
+     "bundleIdentifier": "org.flashme.exp",
+    },
+    "android": {
+     "package": "org.flashme.exp",
+    }
   }
 }

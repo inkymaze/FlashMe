@@ -34,7 +34,7 @@ export default StyleSheet.create({
   quizCard: {
     height: 100,
     width: 250,
-    
+
     flex: 1,
     backgroundColor: white,
     borderWidth: 2.5,
@@ -49,7 +49,6 @@ export default StyleSheet.create({
     paddingRight: 30,
     height: 45,
     borderRadius: 2,
-    alignSelf: 'flex-end',
     justifyContent: 'center',
     alignItems: 'center',
   },
